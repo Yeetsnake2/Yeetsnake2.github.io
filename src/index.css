@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background-color: #0B0E14;
+  color: #E7ECEF;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* thin, low-contrast scrollbar to match the HUD aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0E14;
+}
+::-webkit-scrollbar-thumb {
+  background: #232937;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3ED6C4;
+}
+
+::selection {
+  background: #3ED6C4;
+  color: #0B0E14;
+}
+
+/* utility used by GSAP ScrollTrigger reveals — starting state before JS animates in */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
